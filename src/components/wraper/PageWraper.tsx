@@ -1,12 +1,13 @@
 import React, { Fragment } from 'react'
+import { View } from 'react-native'
 
 const PageWraper = ({ children }: any) => {
     return (
-        <Fragment>
+        <View className='flex-1 px-5 '>
             {
                 children
             }
-        </Fragment>
+        </View>
     )
 }
 
