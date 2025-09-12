@@ -2,8 +2,50 @@ import { View, Text, ScrollView, TouchableOpacity } from 'react-native'
 import React from 'react'
 import PageWraper from '../../components/wraper/PageWraper'
 import Icon from '../../components/icon/Icon'
+import { useNavigation } from '@react-navigation/native'
 
 const UploadScreen = () => {
+    const Navigation = useNavigation()
+    const MediaFiles = [
+        {
+            Title: "Images",
+            Dis: "JPG,PNG,GIF",
+            Icon: "image",
+            coloe: "#3B82F6",
+            size: 20,
+            Navigation: () => Navigation.navigate("StackRoutes", {
+                screen: "FileUploadConfig",
+                params: { data: "Photos" },
+            })
+        },
+        {
+            Title: "Audio",
+            Dis: "MP3, WAV",
+            Icon: "file-music",
+            coloe: "#3B82F6",
+            size: 20,
+            Navigation: () => Navigation.navigate("StackRoutes" as never)
+        },
+        {
+            Title: "Video",
+            Dis: "MP4, MOV",
+            Icon: "file-video",
+            coloe: "#A855F7",
+            size: 20,
+            Navigation: () => Navigation.navigate("StackRoutes", {
+                screen: "FileUploadConfig",
+                params: { data: "Videos" },
+            })
+        },
+        {
+            Title: "Archive",
+            Dis: "ZIP, RAR",
+            Icon: "file-archive",
+            coloe: "#6B7280",
+            size: 20,
+            Navigation: () => Navigation.navigate("StackRoutes" as never)
+        },
+    ]
     return (
         <View className="flex-1 bg-gray-900">
             <PageWraper>
@@ -34,8 +76,6 @@ const UploadScreen = () => {
                                 </View>
                             </View>
                         </View>
-
-                        {/* Title Section */}
                         <View className='w-full flex items-center'>
                             <View className='flex items-center'>
                                 <Text className='text-2xl text-white'>Select Files</Text>
@@ -45,41 +85,17 @@ const UploadScreen = () => {
                         <View className='w-full'>
                             <Text className='text-lg text-white mb-3'>Media Files</Text>
                             <View className='w-full flex flex-row flex-wrap justify-between'>
-                                {/* Images */}
-                                <TouchableOpacity className='bg-zinc-500/20 w-[48%] h-32 rounded-2xl flex items-center justify-center p-3 mb-3'>
-                                    <View className='w-12 h-12 bg-emerald-500/20 rounded-full flex items-center justify-center mb-2'>
-                                        <Icon name='image' color='#10B981' size={20} />
-                                    </View>
-                                    <Text className='text-white text-center font-medium'>Images</Text>
-                                    <Text className='text-white/50 text-xs text-center mt-1'>JPG, PNG, GIF</Text>
-                                </TouchableOpacity>
-
-                                {/* Audio */}
-                                <TouchableOpacity className='bg-zinc-500/20 w-[48%] h-32 rounded-2xl flex items-center justify-center p-3 mb-3'>
-                                    <View className='w-12 h-12 bg-blue-500/20 rounded-full flex items-center justify-center mb-2'>
-                                        <Icon name='file-music' color='#3B82F6' size={20} />
-                                    </View>
-                                    <Text className='text-white text-center font-medium'>Audio</Text>
-                                    <Text className='text-white/50 text-xs text-center mt-1'>MP3, WAV</Text>
-                                </TouchableOpacity>
-
-                                {/* Video */}
-                                <TouchableOpacity className='bg-zinc-500/20 w-[48%] h-32 rounded-2xl flex items-center justify-center p-3'>
-                                    <View className='w-12 h-12 bg-purple-500/20 rounded-full flex items-center justify-center mb-2'>
-                                        <Icon name='file-video' color='#A855F7' size={20} />
-                                    </View>
-                                    <Text className='text-white text-center font-medium'>Video</Text>
-                                    <Text className='text-white/50 text-xs text-center mt-1'>MP4, MOV</Text>
-                                </TouchableOpacity>
-
-                                {/* Compressed */}
-                                <TouchableOpacity className='bg-zinc-500/20 w-[48%] h-32 rounded-2xl flex items-center justify-center p-3'>
-                                    <View className='w-12 h-12 bg-gray-500/20 rounded-full flex items-center justify-center mb-2'>
-                                        <Icon name='file-archive' color='#6B7280' size={20} />
-                                    </View>
-                                    <Text className='text-white text-center font-medium'>Archive</Text>
-                                    <Text className='text-white/50 text-xs text-center mt-1'>ZIP, RAR</Text>
-                                </TouchableOpacity>
+                                {
+                                    MediaFiles.map((item, index) => {
+                                        return <TouchableOpacity onPress={() => item.Navigation()} activeOpacity={0.8} key={index} className='bg-zinc-500/20 w-[48%] h-32 rounded-2xl flex items-center justify-center p-3 mb-3'>
+                                            <View className='w-12 h-12 bg-gray-500/20 rounded-full flex items-center justify-center mb-2'>
+                                                <Icon name={item.Icon} color={item.coloe} size={20} />
+                                            </View>
+                                            <Text className='text-white text-center font-medium'>{item.Title}</Text>
+                                            <Text className='text-white/50 text-xs text-center mt-1'>{item.Dis}</Text>
+                                        </TouchableOpacity>
+                                    })
+                                }
                             </View>
                         </View>
 

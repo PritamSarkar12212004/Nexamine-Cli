@@ -7,7 +7,6 @@ import Icon from '../../components/icon/Icon'
 import LinearGradient from 'react-native-linear-gradient'
 
 const HomeScreen = () => {
-    // Card data
     const cardData = [
         {
             title: 'Total Downloads',
@@ -38,7 +37,6 @@ const HomeScreen = () => {
             colors: ['#9D174D', '#831843']
         }
     ]
-
     return (
         <View className="flex-1 bg-gray-900">
             <PageWraper>
