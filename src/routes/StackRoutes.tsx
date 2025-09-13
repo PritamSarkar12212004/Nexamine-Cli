@@ -2,6 +2,7 @@ import React from 'react'
 import { createNativeStackNavigator } from '@react-navigation/native-stack'
 import FileUploadConfig from '../page/stack/upload/FileUploadConfig'
 import FinalFainalUpload from '../page/stack/upload/FinalFainalUpload'
+import FileDocumentPicker from '../page/stack/upload/FileDocumentPicker'
 const Stack = createNativeStackNavigator()
 const StackRoutes = () => {
     return (
@@ -11,6 +12,7 @@ const StackRoutes = () => {
         }}>
             <Stack.Screen name='FileUploadConfig' component={FileUploadConfig} />
             <Stack.Screen name='FinalFainalUpload' component={FinalFainalUpload} />
+            <Stack.Screen name='FileDocumentPicker' component={FileDocumentPicker} />
         </Stack.Navigator>
     )
 }

@@ -24,7 +24,10 @@ const UploadScreen = () => {
             Icon: "file-music",
             coloe: "#3B82F6",
             size: 20,
-            Navigation: () => Navigation.navigate("StackRoutes" as never)
+            Navigation: () => Navigation.navigate("StackRoutes", {
+                screen: "FileDocumentPicker",
+                params: { data: "Audios" }
+            })
         },
         {
             Title: "Video",

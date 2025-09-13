@@ -1,7 +1,8 @@
-import { View, Text, TouchableOpacity } from 'react-native'
+import { View, Text, TouchableOpacity, Image } from 'react-native'
 import React from 'react'
 import GrediantColor from '../../constants/colors/GrediantColor'
 import Icon from '../icon/Icon'
+import ImageConstant from '../../constants/image/ImageConstant'
 
 const DrawerNavigationProps = ({ navigation, state }: any) => {
     const ScreenData = [
@@ -20,7 +21,7 @@ const DrawerNavigationProps = ({ navigation, state }: any) => {
         >
             <View className='flex-1 pb-8'>
                 <View className='w-full flex items-center justify-center h-24'>
-                    <Text className='text-3xl font-bold text-white'>Logo</Text>
+                    <Image source={ImageConstant.MainLogo}  className='h-14 w-14' resizeMode='cover' />
                 </View>
                 <View className='flex-1 flex items-center justify-between mt-5 py-4'>
                     {ScreenData.map((item, index) => {
