@@ -12,9 +12,12 @@ const FileDocumentPicker = () => {
   const [selectedFiles, setSelectedFiles] = useState<any[]>([]);
 
   const setFileFunc = ({ path, name }: { path: string; name: string }) => {
+    // Check if the file is already selected
     const isAlreadySelected = selectedFiles.some((file) => file.path === path);
     if (!isAlreadySelected) {
       setSelectedFiles((prev) => [...prev, { path, name }]);
+    } else {
+      console.log("File already selected:", name);
     }
   };
 

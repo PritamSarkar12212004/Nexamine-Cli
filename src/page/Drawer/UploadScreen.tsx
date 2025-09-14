@@ -26,7 +26,7 @@ const UploadScreen = () => {
             size: 20,
             Navigation: () => Navigation.navigate("StackRoutes", {
                 screen: "FileDocumentPicker",
-                params: { data: "Audios" }
+                params: { data: "Audio" }
             })
         },
         {
@@ -36,8 +36,8 @@ const UploadScreen = () => {
             coloe: "#A855F7",
             size: 20,
             Navigation: () => Navigation.navigate("StackRoutes", {
-                screen: "FileUploadConfig",
-                params: { data: "Videos" },
+                screen: "FileDocumentPicker",
+                params: { data: "Video" },
             })
         },
         {
@@ -46,9 +46,103 @@ const UploadScreen = () => {
             Icon: "file-archive",
             coloe: "#6B7280",
             size: 20,
-            Navigation: () => Navigation.navigate("StackRoutes" as never)
+            Navigation: () => Navigation.navigate("StackRoutes", {
+                screen: "FileDocumentPicker",
+                params: { data: "Archive" },
+            })
         },
     ]
+    const DocumentFiles = [
+        {
+            Title: "PDF",
+            Dis: "Documents",
+            Icon: "file-pdf",
+            coloe: "#F40F02",
+            size: 20,
+            Navigation: () =>
+                Navigation.navigate("StackRoutes", {
+                    screen: "FileDocumentPicker",
+                    params: { data: "PDF" },
+                }),
+        },
+        {
+            Title: "Word",
+            Dis: "DOC, DOCX",
+            Icon: "file-word",
+            coloe: "#2563EB",
+            size: 20,
+            Navigation: () =>
+                Navigation.navigate("StackRoutes", {
+                    screen: "FileDocumentPicker",
+                    params: { data: "Word" },
+                }),
+        },
+        {
+            Title: "Excel",
+            Dis: "XLS, XLSX",
+            Icon: "file-excel",
+            coloe: "#16A34A",
+            size: 20,
+            Navigation: () =>
+                Navigation.navigate("StackRoutes", {
+                    screen: "FileDocumentPicker",
+                    params: { data: "Excel" },
+                }),
+        },
+        {
+            Title: "PowerPoint",
+            Dis: "PPT, PPTX",
+            Icon: "file-powerpoint",
+            coloe: "#EA580C",
+            size: 20,
+            Navigation: () =>
+                Navigation.navigate("StackRoutes", {
+                    screen: "FileDocumentPicker",
+                    params: { data: "PowerPoint" },
+                }),
+        },
+    ];
+    const OtherFiles = [
+        {
+            Title: "Text Files",
+            Dis: "TXT, RTF",
+            Icon: "file-text",
+            bgColor: "#06B6D4", // cyan
+            bgOpacity: "bg-cyan-500/20",
+            size: 20,
+            Navigation: () =>
+                Navigation.navigate("StackRoutes", {
+                    screen: "FileDocumentPicker",
+                    params: { data: "Text Files" },
+                }),
+        },
+        {
+            Title: "Code",
+            Dis: "JS, HTML, CSS",
+            Icon: "code",
+            bgColor: "#EAB308", // yellow
+            bgOpacity: "bg-yellow-500/20",
+            size: 20,
+            Navigation: () =>
+                Navigation.navigate("StackRoutes", {
+                    screen: "FileDocumentPicker",
+                    params: { data: "Code" },
+                }),
+        },
+        {
+            Title: "Other Files",
+            Dis: "Various formats",
+            Icon: "file",
+            bgColor: "#EC4899", // pink
+            bgOpacity: "bg-pink-500/20",
+            size: 20,
+            Navigation: () =>
+                Navigation.navigate("StackRoutes", {
+                    screen: "FileDocumentPicker",
+                    params: { data: "Other" },
+                }),
+        },
+    ];
     return (
         <View className="flex-1 bg-gray-900">
             <PageWraper>
@@ -101,75 +195,37 @@ const UploadScreen = () => {
                                 }
                             </View>
                         </View>
-
                         <View className='w-full'>
                             <Text className='text-lg text-white mb-3'>Document Files</Text>
                             <View className='w-full flex flex-row flex-wrap justify-between'>
-                                <TouchableOpacity className='bg-zinc-500/20 w-[48%] h-32 rounded-2xl flex items-center justify-center p-3 mb-3'>
-                                    <View className='w-12 h-12 bg-red-500/20 rounded-full flex items-center justify-center mb-2'>
-                                        <Icon name='file-pdf' color='#F40F02' size={20} />
-                                    </View>
-                                    <Text className='text-white text-center font-medium'>PDF</Text>
-                                    <Text className='text-white/50 text-xs text-center mt-1'>Documents</Text>
-                                </TouchableOpacity>
-
-                                <TouchableOpacity className='bg-zinc-500/20 w-[48%] h-32 rounded-2xl flex items-center justify-center p-3 mb-3'>
-                                    <View className='w-12 h-12 bg-blue-600/20 rounded-full flex items-center justify-center mb-2'>
-                                        <Icon name='file-word' color='#2563EB' size={20} />
-                                    </View>
-                                    <Text className='text-white text-center font-medium'>Word</Text>
-                                    <Text className='text-white/50 text-xs text-center mt-1'>DOC, DOCX</Text>
-                                </TouchableOpacity>
-
-                                <TouchableOpacity className='bg-zinc-500/20 w-[48%] h-32 rounded-2xl flex items-center justify-center p-3'>
-                                    <View className='w-12 h-12 bg-green-600/20 rounded-full flex items-center justify-center mb-2'>
-                                        <Icon name='file-excel' color='#16A34A' size={20} />
-                                    </View>
-                                    <Text className='text-white text-center font-medium'>Excel</Text>
-                                    <Text className='text-white/50 text-xs text-center mt-1'>XLS, XLSX</Text>
-                                </TouchableOpacity>
-
-                                <TouchableOpacity className='bg-zinc-500/20 w-[48%] h-32 rounded-2xl flex items-center justify-center p-3'>
-                                    <View className='w-12 h-12 bg-orange-600/20 rounded-full flex items-center justify-center mb-2'>
-                                        <Icon name='file-powerpoint' color='#EA580C' size={20} />
-                                    </View>
-                                    <Text className='text-white text-center font-medium'>PowerPoint</Text>
-                                    <Text className='text-white/50 text-xs text-center mt-1'>PPT, PPTX</Text>
-                                </TouchableOpacity>
+                                {
+                                    DocumentFiles.map((item, index) => {
+                                        return <TouchableOpacity onPress={() => item.Navigation()} activeOpacity={0.8} key={index} className='bg-zinc-500/20 w-[48%] h-32 rounded-2xl flex items-center justify-center p-3 mb-3'>
+                                            <View className='w-12 h-12 bg-gray-500/20 rounded-full flex items-center justify-center mb-2'>
+                                                <Icon name={item.Icon} color={item.coloe} size={20} />
+                                            </View>
+                                            <Text className='text-white text-center font-medium'>{item.Title}</Text>
+                                            <Text className='text-white/50 text-xs text-center mt-1'>{item.Dis}</Text>
+                                        </TouchableOpacity>
+                                    })
+                                }
                             </View>
                         </View>
-
-
                         {/* Other Files Section */}
                         <View className='w-full'>
                             <Text className='text-lg text-white mb-3'>Other Files</Text>
                             <View className='w-full flex flex-row flex-wrap justify-between'>
-                                {/* Text Files */}
-                                <TouchableOpacity className='bg-zinc-500/20 w-[48%] h-32 rounded-2xl flex items-center justify-center p-3 mb-3'>
-                                    <View className='w-12 h-12 bg-cyan-500/20 rounded-full flex items-center justify-center mb-2'>
-                                        <Icon name='file-text' color='#06B6D4' size={20} />
-                                    </View>
-                                    <Text className='text-white text-center font-medium'>Text Files</Text>
-                                    <Text className='text-white/50 text-xs text-center mt-1'>TXT, RTF</Text>
-                                </TouchableOpacity>
-
-                                {/* Code Files */}
-                                <TouchableOpacity className='bg-zinc-500/20 w-[48%] h-32 rounded-2xl flex items-center justify-center p-3 mb-3'>
-                                    <View className='w-12 h-12 bg-yellow-500/20 rounded-full flex items-center justify-center mb-2'>
-                                        <Icon name='code' color='#EAB308' size={20} />
-                                    </View>
-                                    <Text className='text-white text-center font-medium'>Code</Text>
-                                    <Text className='text-white/50 text-xs text-center mt-1'>JS, HTML, CSS</Text>
-                                </TouchableOpacity>
-
-                                {/* Other Files */}
-                                <TouchableOpacity className='bg-zinc-500/20 w-[48%] h-32 rounded-2xl flex items-center justify-center p-3'>
-                                    <View className='w-12 h-12 bg-pink-500/20 rounded-full flex items-center justify-center mb-2'>
-                                        <Icon name='file' color='#EC4899' size={20} />
-                                    </View>
-                                    <Text className='text-white text-center font-medium'>Other Files</Text>
-                                    <Text className='text-white/50 text-xs text-center mt-1'>Various formats</Text>
-                                </TouchableOpacity>
+                                {
+                                    OtherFiles.map((item, index) => {
+                                        return <TouchableOpacity onPress={() => item.Navigation()} activeOpacity={0.8} key={index} className='bg-zinc-500/20 w-[48%] h-32 rounded-2xl flex items-center justify-center p-3 mb-3'>
+                                            <View className='w-12 h-12 bg-gray-500/20 rounded-full flex items-center justify-center mb-2'>
+                                                <Icon name={item.Icon} color={item.bgColor} size={20} />
+                                            </View>
+                                            <Text className='text-white text-center font-medium'>{item.Title}</Text>
+                                            <Text className='text-white/50 text-xs text-center mt-1'>{item.Dis}</Text>
+                                        </TouchableOpacity>
+                                    })
+                                }
                             </View>
                         </View>
                     </View>
