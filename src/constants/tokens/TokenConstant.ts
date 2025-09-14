@@ -1,0 +1,7 @@
+const TokenConstant = {
+  key: {
+    PRIVATE_KEY: 'PRIVATE_KEY',
+    PUBLIC_KEY: 'PUBLIC_KEY',
+  },
+};
+export default TokenConstant;

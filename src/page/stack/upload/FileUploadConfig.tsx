@@ -40,6 +40,12 @@ const FileUploadConfig = () => {
 
   }, []);
 
+  const NavigationPage = () => {
+    navigation.navigate("FinalFainalUpload", {
+      data: selected
+    })
+  }
+
   return (
     <View className='flex-1 bg-gray-900'>
       <Modal transparent visible={modal} animationType="fade">
@@ -117,6 +123,7 @@ const FileUploadConfig = () => {
                 selected.length > 0 && <TouchableOpacity
                   className="bg-[#4f45b6] w-full h-14 rounded-2xl flex items-center justify-center flex-row shadow-lg"
                   activeOpacity={0.8}
+                  onPress={() => NavigationPage()}
                 >
                   <Icon name="cloud" size={22} color="white" />
                   <Text className="text-lg font-semibold text-white ml-2">Upload</Text>
