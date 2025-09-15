@@ -1,23 +1,24 @@
 import { PieChart } from "react-native-gifted-charts";
 import GrediantColor from "../../constants/colors/GrediantColor";
-import { Text, View } from "react-native";
+import { View } from "react-native";
 
-const PaiChartUi = () => {
-    const pieData = [
+const PaiChartUi = ({ valuData, size }: any) => {
+    const defaultData = [
         { value: 30, color: '#177AD5' },
         { value: 70, color: '#ED6665' }
     ];
+
     return (
         <View className="flex gap-5">
             <PieChart
-                data={pieData}
-                radius={130}
+                data={valuData && valuData.length ? valuData : defaultData}
+                radius={size ? size : 130}
                 donut
                 showText
                 showValuesAsLabels
                 showTextBackground
                 textBackgroundColor="#333"
-                textBackgroundRadius={22}
+                textBackgroundRadius={0}
                 textColor="white"
                 textSize={16}
                 fontWeight="bold"
@@ -28,5 +29,6 @@ const PaiChartUi = () => {
             />
         </View>
     );
-}
-export default PaiChartUi
+};
+
+export default PaiChartUi;

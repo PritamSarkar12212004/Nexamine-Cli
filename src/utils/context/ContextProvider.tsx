@@ -2,7 +2,9 @@ import { createContext, useContext, useState } from "react";
 
 interface ContextType {
     tokenContext: any,
-    setokenContext: any
+    setokenContext: any,
+    base64Convert: any,
+    setbase64Convert: any
 }
 const Context = createContext<ContextType | undefined>(undefined);
 export const ContextProvider = ({ children }: { children: React.ReactNode }) => {
@@ -14,11 +16,15 @@ export const ContextProvider = ({ children }: { children: React.ReactNode }) => 
         publickToken: null
     })
 
+    const [base64Convert, setbase64Convert] = useState<any>(null)
+
     return (
         <Context.Provider
             value={{
                 tokenContext,
-                setokenContext
+                setokenContext,
+                base64Convert,
+                setbase64Convert
             }}
         >
             {children}

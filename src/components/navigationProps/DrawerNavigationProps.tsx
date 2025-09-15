@@ -21,7 +21,7 @@ const DrawerNavigationProps = ({ navigation, state }: any) => {
         >
             <View className='flex-1 pb-8'>
                 <View className='w-full flex items-center justify-center h-24'>
-                    <Image source={ImageConstant.MainLogo}  className='h-14 w-14' resizeMode='cover' />
+                    <Image source={ImageConstant.MainLogo} className='h-14 w-14' resizeMode='cover' />
                 </View>
                 <View className='flex-1 flex items-center justify-between mt-5 py-4'>
                     {ScreenData.map((item, index) => {
@@ -30,7 +30,7 @@ const DrawerNavigationProps = ({ navigation, state }: any) => {
                             <TouchableOpacity
                                 activeOpacity={0.8}
                                 key={index}
-                                className="flex items-center justify-center gap-2 "
+                                className="flex w-full items-center justify-center gap-2 "
                                 onPress={() => navigation.navigate(item.ScreenName)}
                             >
                                 <Icon

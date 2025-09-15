@@ -126,7 +126,7 @@ const FileUploadConfig = () => {
                   onPress={() => NavigationPage()}
                 >
                   <Icon name="cloud" size={22} color="white" />
-                  <Text className="text-lg font-semibold text-white ml-2">Upload</Text>
+                  <Text className="text-lg font-semibold text-white ml-2">Proceed</Text>
                 </TouchableOpacity>
               }
 
