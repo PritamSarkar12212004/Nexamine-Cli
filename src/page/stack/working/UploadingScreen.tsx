@@ -1,15 +1,19 @@
-import { View, Text } from 'react-native';
 import React, { useEffect, useState } from 'react';
 import { useRoute } from '@react-navigation/native';
 import ImageBaseConveter from '../../../components/converter/ImageBaseConveter';
 import encryptFiles from '../../../components/encryption/Encryption';
 import { userContext } from '../../../utils/context/ContextProvider';
+import api from '../../../utils/api/api';
+import ColorGrediant from '../../../components/wraper/ColorGrediant';
+import Lotti from '../../../components/animation/Lotti';
+import AnimationConstant from '../../../constants/animation/AnimationConstant';
+import GrediantColor from '../../../constants/colors/GrediantColor';
+import { View } from 'react-native';
 
 const UploadingScreen = () => {
     const route = useRoute();
     const { data } = route.params.data;
     const { tokenContext } = userContext()
-    const [converted, setConverted] = useState<any>([]);
     const splitBase64 = (base64String: any) => {
         const mid = Math.ceil(base64String.length / 2);
         return {
@@ -28,15 +32,21 @@ const UploadingScreen = () => {
                     part2,
                 };
             });
-            setConverted(finalData);
             const returnFile = await encryptFiles(
                 finalData,
                 tokenContext.publickToken,
                 tokenContext.privateToken
             );
-            console.log("encrypt file", returnFile)
-
+            console.log("call")
+            await api.post("/image/store-data", {
+                payload: returnFile
+            }).then((res) => {
+                console.log(res.data)
+            }).catch((err) => {
+                console.log(err)
+            })
         });
+        console.log("call domne")
     };
 
     useEffect(() => {
@@ -46,9 +56,12 @@ const UploadingScreen = () => {
     }, [data]);
 
     return (
-        <View>
+        <ColorGrediant>
+            <View className='flex-1 flex items-center justify-center'>
 
-        </View>
+                <Lotti path={AnimationConstant.UploaedAni} backgroundColor={GrediantColor.firstColor} height={500} width={500} />
+            </View>
+        </ColorGrediant>
     );
 };
 
