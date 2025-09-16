@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "363283777628",
+    "project_id": "nexamine-7d672",
+    "storage_bucket": "nexamine-7d672.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:363283777628:android:d99ac679574460a077be99",
+        "android_client_info": {
+          "package_name": "com.nexamine"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAiYoO3Y7_5ZzGjwqHNFslQkOflN3bTkdo"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
