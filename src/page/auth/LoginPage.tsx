@@ -5,8 +5,13 @@ import ColorGrediant from '../../components/wraper/ColorGrediant'
 import Icon from '../../components/icon/Icon';
 import ImageConstant from '../../constants/image/ImageConstant';
 import GrediantColor from '../../constants/colors/GrediantColor';
+import useGoogleAuth from '../../hooks/firebase/authentication/useGoogleAuth';
+import useGithubAuth from '../../hooks/firebase/authentication/useGithubAuth';
 
 const LoginPage = () => {
+    const { startSignInFlow } = useGoogleAuth()
+    const { githubLogin } = useGithubAuth()
+
     const [toggleCheckBox, setToggleCheckBox] = useState(false)
     return (
         <KeyboardAvoidingView
@@ -100,11 +105,11 @@ const LoginPage = () => {
                                     <View className='w-[35%] h-1 bg-white/40 rounded-full'></View>
                                 </View>
                                 <View className='w-full flex flex-row items-center justify-between'>
-                                    <TouchableOpacity className='h-16 w-[45%] border-2 rounded-2xl border-white/20 flex  flex-row gap-3 items-center justify-center' activeOpacity={0.8}>
+                                    <TouchableOpacity onPress={() => startSignInFlow()} className='h-16 w-[45%] border-2 rounded-2xl border-white/20 flex  flex-row gap-3 items-center justify-center' activeOpacity={0.8}>
                                         <Icon name='google' color='gray' size={26} />
                                         <Text className='text-xl font-semibold text-white/60'>Google</Text>
                                     </TouchableOpacity>
-                                    <TouchableOpacity className='h-16 w-[45%] border-2 rounded-2xl border-white/20 flex  flex-row gap-3 items-center justify-center' activeOpacity={0.8}>
+                                    <TouchableOpacity onPress={() => githubLogin()} className='h-16 w-[45%] border-2 rounded-2xl border-white/20 flex  flex-row gap-3 items-center justify-center' activeOpacity={0.8}>
                                         <Icon name='github' color='gray' size={26} />
                                         <Text className='text-xl font-semibold text-white/60'>Github</Text>
                                     </TouchableOpacity>
