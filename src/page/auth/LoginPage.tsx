@@ -5,10 +5,12 @@ import ColorGrediant from '../../components/wraper/ColorGrediant'
 import ImageConstant from '../../constants/image/ImageConstant';
 import GrediantColor from '../../constants/colors/GrediantColor';
 import { useNavigation } from '@react-navigation/native';
+import useAuth from '../../hooks/api/auth/useAuth';
 
 const LoginPage = () => {
     const navigation = useNavigation()
     const [toggleCheckBox, setToggleCheckBox] = useState(false)
+
     return (
         <KeyboardAvoidingView
             behavior={Platform.OS === 'ios' ? 'padding' : 'height'}

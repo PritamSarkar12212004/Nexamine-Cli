@@ -4,7 +4,9 @@ interface ContextType {
     tokenContext: any,
     setokenContext: any,
     base64Convert: any,
-    setbase64Convert: any
+    setbase64Convert: any,
+    tempOtpData: any,
+    setTempOtpData: any
 }
 const Context = createContext<ContextType | undefined>(undefined);
 export const ContextProvider = ({ children }: { children: React.ReactNode }) => {
@@ -17,6 +19,21 @@ export const ContextProvider = ({ children }: { children: React.ReactNode }) => 
     })
 
     const [base64Convert, setbase64Convert] = useState<any>(null)
+    const [tempOtpData, setTempOtpData] = useState<{
+        otp: number | string | null
+        phoneNumber: number | string | null
+        firstName: string | null
+        lastName: string | null
+        userName: string | null | any
+        passowrd: string | null | any
+    } | null>({
+        otp: null,
+        phoneNumber: null,
+        firstName: null,
+        lastName: null,
+        userName: null,
+        passowrd: null
+    })
 
     return (
         <Context.Provider
@@ -24,7 +41,9 @@ export const ContextProvider = ({ children }: { children: React.ReactNode }) => 
                 tokenContext,
                 setokenContext,
                 base64Convert,
-                setbase64Convert
+                setbase64Convert,
+                tempOtpData,
+                setTempOtpData
             }}
         >
             {children}
