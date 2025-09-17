@@ -2,12 +2,13 @@ import { View, Text, TextInput, KeyboardAvoidingView, Platform, ScrollView, Touc
 import React, { useState } from 'react'
 import CheckBox from '@react-native-community/checkbox';
 import ColorGrediant from '../../components/wraper/ColorGrediant'
-import ImageConstant from '../../constants/image/ImageConstant';
 import GrediantColor from '../../constants/colors/GrediantColor';
+import ImageConstant from '../../constants/image/ImageConstant';
 import { useNavigation } from '@react-navigation/native';
 
-const LoginPage = () => {
+const LoginReg = () => {
     const navigation = useNavigation()
+
     const [toggleCheckBox, setToggleCheckBox] = useState(false)
     return (
         <KeyboardAvoidingView
@@ -27,24 +28,43 @@ const LoginPage = () => {
                                     <Text className='text-3xl font-bold tracking-widest text-white/50'>
                                         Nexamine
                                     </Text>
-                                    <TouchableOpacity activeOpacity={0.8} onPress={() => navigation.navigate("LoginReg")} className='px-5 py-2 flex-row  gap-2  rounded-3xl bg-white/40'>
-                                        <Text>Create Account</Text>
+                                    <TouchableOpacity activeOpacity={0.8} onPress={() => navigation.goBack()} className='px-5 py-2 rounded-3xl bg-white/40'>
+                                        <Text>Login Account</Text>
                                     </TouchableOpacity>
                                 </View>
                                 <View><Text className='text-4xl text-white/70 font-semibold px-8 text-center'>Your Files. Your Key. Your Security</Text></View>
                             </View>
                             <Image source={ImageConstant.Login} className='w-full h-full rounded-3xl opacity-85' resizeMode='cover' />
                         </View>
-                        <View className="w-[48%] flex gap-3  ">
+                        <View className="w-[48%] flex gap-3  justify-between">
                             <View className="flex gap-3">
                                 <Text className="text-4xl tracking-widest text-white/70 font-semibold">
-                                    Login an Account
+                                    Create an Account
                                 </Text>
                                 <Text className="text-white/70">
-                                    access your account by Login
+                                    access your account by Create
                                 </Text>
                             </View>
                             <View className="w-full flex gap-5">
+                                <View className="w-full flex flex-row items-center justify-between">
+                                    <TextInput
+                                        className="h-14 bg-white/20 w-[49%] rounded-lg border-white/10 border-2 px-3 placeholder:text-lg placeholder:text-white/70 text-white/80"
+                                        placeholder="First name"
+                                        placeholderTextColor="rgba(255,255,255,0.7)"
+                                    />
+                                    <TextInput
+                                        className="h-14 bg-white/20 w-[49%] rounded-lg border-white/10 border-2 px-3 placeholder:text-lg placeholder:text-white/70 text-white/80"
+                                        placeholder="Last name"
+                                        placeholderTextColor="rgba(255,255,255,0.7)"
+                                    />
+                                </View>
+                                <View className="w-full">
+                                    <TextInput
+                                        className="h-14 bg-white/20 w-full rounded-lg border-white/10 border-2 px-3 placeholder:text-lg placeholder:text-white/70 text-white/80"
+                                        placeholder="Username"
+                                        placeholderTextColor="rgba(255,255,255,0.7)"
+                                    />
+                                </View>
                                 <View className="w-full">
                                     <TextInput
                                         className="h-14 bg-white/20 w-full rounded-lg border-white/10 border-2 px-3 placeholder:text-lg placeholder:text-white/70 text-white/80"
@@ -77,8 +97,10 @@ const LoginPage = () => {
                             </View>
                             <View className='w-full flex gap-5'>
                                 <TouchableOpacity className='w-full h-14 bg-blue-500/60 rounded-lg flex items-center justify-center ' activeOpacity={0.8}>
-                                    <Text className=' text-white font-semibold'>Login Account</Text>
+                                    <Text className=' text-white font-semibold'>Create Account</Text>
                                 </TouchableOpacity>
+
+
                             </View>
                         </View>
                     </View>
@@ -88,4 +110,4 @@ const LoginPage = () => {
     )
 }
 
-export default LoginPage
+export default LoginReg

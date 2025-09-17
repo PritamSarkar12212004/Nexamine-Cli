@@ -1,5 +1,5 @@
 import './global.css'
-import React, { Fragment, useEffect, useState } from 'react'
+import React, { Fragment } from 'react'
 import Routes from './src/routes/Routes'
 import { ContextProvider } from './src/utils/context/ContextProvider'
 import WorkerRoutes from './src/routes/WorkerRoutes'
